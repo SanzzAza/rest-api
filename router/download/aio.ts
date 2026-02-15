@@ -1,27 +1,5 @@
 import { Request, Response } from 'express';
-import axios, { AxiosInstance, AxiosError } from 'axios';
-
-// Interface untuk request
-interface DownloadRequest {
-  url: string;
-}
-
-// Interface untuk response API
-interface DownloadResponse {
-  status: boolean;
-  data?: {
-    title?: string;
-    url?: string;
-    downloadUrl?: string;
-    thumbnail?: string;
-    duration?: string;
-    quality?: string;
-    source?: string;
-    [key: string]: any;
-  };
-  message?: string;
-  error?: string;
-}
+import axios, { AxiosError, AxiosInstance } from 'axios';
 
 class PituCodeClient {
     private client: AxiosInstance;
@@ -34,7 +12,6 @@ class PituCodeClient {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36',
-                'Content-Type': 'application/json',
             },
         });
     }
@@ -53,33 +30,32 @@ class PituCodeClient {
             throw new Error('URL tidak valid');
         }
 
-        const { data } = await this.client.post('/aio-downloader-v2', 
-            { url },
-            {
-                headers: {
-                    'x-api-key': this.apiKey,
-                },
-            }
-        );
+        const { data } = await this.client.get('/aio-downloader-v2', {
+            params: { url },
+            headers: {
+                'x-api-key': this.apiKey,
+            },
+        });
 
         return data;
     }
 
     private parseResponse(data: any) {
-        // Parsing response sesuai format API
         if (!data) {
             throw new Error('Response kosong dari API');
         }
 
-        // Sesuaikan dengan struktur response API sebenarnya
+        const result = data.result || data.data || data;
+
         return {
-            title: data.title || data.name || 'No Title',
-            thumbnail: data.thumbnail || data.image || null,
-            downloadUrl: data.downloadUrl || data.url || data.download || null,
-            duration: data.duration || null,
-            quality: data.quality || null,
-            source: data.source || 'unknown',
-            raw: data, // Data mentah untuk debugging
+            success: Boolean(data.success ?? true),
+            url: data.url || result.url || null,
+            source: result.source || data.source || 'unknown',
+            title: result.title || data.title || 'No Title',
+            thumbnail: result.thumbnail || data.thumbnail || null,
+            duration: result.duration || data.duration || null,
+            links: result.links || [],
+            raw: data,
         };
     }
 
@@ -92,7 +68,8 @@ class PituCodeClient {
                 const axiosError = e as AxiosError<any>;
                 if (axiosError.response) {
                     throw new Error(
-                        axiosError.response.data?.message || 
+                        axiosError.response.data?.message ||
+                        axiosError.response.data?.error ||
                         `API Error: ${axiosError.response.status}`
                     );
                 }
@@ -107,27 +84,26 @@ export default async function downloaderHandler(req: Request, res: Response) {
     const url = (req.query.url || req.body.url) as string;
 
     if (!url) {
-        return res.status(400).json({ 
-            status: false, 
-            message: 'URL required' 
+        return res.status(400).json({
+            status: false,
+            message: 'URL required',
         });
     }
 
     try {
         const client = new PituCodeClient();
         const result = await client.process(url);
-        
-        res.json({ 
-            status: true, 
-            data: result 
+
+        return res.json({
+            status: true,
+            data: result,
         });
     } catch (error: any) {
-        res.status(500).json({ 
-            status: false, 
-            message: error.message 
+        return res.status(500).json({
+            status: false,
+            message: error.message,
         });
     }
 }
 
-// Export class jika ingin digunakan di tempat lain
 export { PituCodeClient };

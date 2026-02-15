@@ -95,6 +95,19 @@
     ],
     "download": [
       {
+        "name": "All-in-One Downloader",
+        "endpoint": "/api/download/aio",
+        "filename": "aio",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Supported media URL"
+          }
+        ]
+      },
+      {
         "name": "Facebook Downloader",
         "endpoint": "/api/download/facebook",
         "filename": "facebook",
