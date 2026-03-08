@@ -56,7 +56,7 @@
       }
     ],
     "tools": [
-       {
+      {
         "name": "Screenshot Web",
         "endpoint": "/api/tools/ssweb",
         "filename": "ssweb",
@@ -74,7 +74,7 @@
           }
         ]
       },
-       {
+      {
         "name": "Short URL",
         "endpoint": "/api/tools/shorturl",
         "filename": "shorturl",
@@ -171,6 +171,239 @@
             "name": "q",
             "required": true,
             "description": "Query"
+          }
+        ]
+      }
+    ],
+    "shortdrama": [
+      {
+        "name": "DramaBox Search",
+        "endpoint": "/api/shortdrama/dramabox",
+        "filename": "dramabox",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian (untuk action=search)"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID (untuk action=detail/stream)"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode (untuk action=stream)"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "ReelShort",
+        "endpoint": "/api/shortdrama/reelshort",
+        "filename": "reelshort",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "Melolo Short Drama",
+        "endpoint": "/api/shortdrama/melolo",
+        "filename": "melolo",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort Short Drama",
+        "endpoint": "/api/shortdrama/goodshort",
+        "filename": "goodshort",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave Short Drama",
+        "endpoint": "/api/shortdrama/dramawave",
+        "filename": "dramawave",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels Short Drama",
+        "endpoint": "/api/shortdrama/freereels",
+        "filename": "freereels",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
+          }
+        ]
+      },
+      {
+        "name": "NetShort Short Drama",
+        "endpoint": "/api/shortdrama/netshort",
+        "filename": "netshort",
+        "method": "GET",
+        "params": [
+          {
+            "name": "action",
+            "required": false,
+            "description": "search | detail | stream (default: search)"
+          },
+          {
+            "name": "q",
+            "required": false,
+            "description": "Keyword pencarian"
+          },
+          {
+            "name": "id",
+            "required": false,
+            "description": "Drama ID"
+          },
+          {
+            "name": "ep",
+            "required": false,
+            "description": "Nomor episode"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman (default: 1)"
           }
         ]
       }
