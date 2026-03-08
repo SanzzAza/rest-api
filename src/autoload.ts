@@ -107,10 +107,11 @@ const registerRoute = (route: any, category: string, creatorName?: string, app?:
         return;
     }
 
+    const folderName = route.folder || category;
     const possibleBaseDirs = [
-        path.join(__dirname, '..', 'router', category),
-        path.join(process.cwd(), 'router', category),
-        path.join(process.cwd(), 'dist', 'router', category)
+        path.join(__dirname, '..', 'router', folderName),
+        path.join(process.cwd(), 'router', folderName),
+        path.join(process.cwd(), 'dist', 'router', folderName)
     ];
 
     const extensions = ['.ts', '.js'];
