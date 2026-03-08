@@ -177,45 +177,666 @@
     ],
     "shortdrama": [
       {
-        "name": "Short Drama API",
-        "endpoint": "/api/shortdrama/:platform/:action",
-        "filename": "index",
+        "name": "Melolo - Search",
+        "endpoint": "/api/shortdrama/melolo/search",
+        "filename": "shortdrama",
         "method": "GET",
         "params": [
           {
-            "name": "platform",
+            "name": "q",
             "required": true,
-            "description": "dramabox | reelshort | melolo | goodshort | dramawave | freereels | netshort"
-          },
-          {
-            "name": "action",
-            "required": true,
-            "description": "search | home | populer | new | detail | stream"
-          },
-          {
-            "name": "query",
-            "required": false,
-            "description": "Keyword pencarian (untuk action=search)"
-          },
-          {
-            "name": "id",
-            "required": false,
-            "description": "Drama ID (untuk action=detail/stream)"
-          },
-          {
-            "name": "ep",
-            "required": false,
-            "description": "Nomor episode (untuk action=stream)"
-          },
-          {
-            "name": "page",
-            "required": false,
-            "description": "Halaman (default: 1)"
+            "description": "Keyword"
           },
           {
             "name": "result",
             "required": false,
             "description": "Jumlah hasil (default: 10)"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "Melolo - Homepage",
+        "endpoint": "/api/shortdrama/melolo/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "Melolo - Trending",
+        "endpoint": "/api/shortdrama/melolo/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "Melolo - Latest",
+        "endpoint": "/api/shortdrama/melolo/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "Melolo - Detail",
+        "endpoint": "/api/shortdrama/melolo/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "Melolo - Stream",
+        "endpoint": "/api/shortdrama/melolo/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Drama ID (video_id dari detail)"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Search",
+        "endpoint": "/api/shortdrama/dramabox/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "q",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "result",
+            "required": false,
+            "description": "Jumlah hasil"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Homepage",
+        "endpoint": "/api/shortdrama/dramabox/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Trending",
+        "endpoint": "/api/shortdrama/dramabox/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Latest",
+        "endpoint": "/api/shortdrama/dramabox/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Detail",
+        "endpoint": "/api/shortdrama/dramabox/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "DramaBox - Stream",
+        "endpoint": "/api/shortdrama/dramabox/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          },
+          {
+            "name": "episodeIndex",
+            "required": true,
+            "description": "Index episode"
+          }
+        ]
+      },
+      {
+        "name": "ReelShort - Search",
+        "endpoint": "/api/shortdrama/reelshort/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "q",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "ReelShort - Homepage",
+        "endpoint": "/api/shortdrama/reelshort/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "ReelShort - Trending",
+        "endpoint": "/api/shortdrama/reelshort/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "ReelShort - Latest",
+        "endpoint": "/api/shortdrama/reelshort/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "ReelShort - Detail",
+        "endpoint": "/api/shortdrama/reelshort/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "bookId",
+            "required": true,
+            "description": "Book ID"
+          }
+        ]
+      },
+      {
+        "name": "ReelShort - Stream",
+        "endpoint": "/api/shortdrama/reelshort/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "bookId",
+            "required": true,
+            "description": "Book ID"
+          },
+          {
+            "name": "chapterId",
+            "required": true,
+            "description": "Chapter ID dari detail"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Search",
+        "endpoint": "/api/shortdrama/freereels/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "q",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Homepage",
+        "endpoint": "/api/shortdrama/freereels/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Trending",
+        "endpoint": "/api/shortdrama/freereels/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Latest",
+        "endpoint": "/api/shortdrama/freereels/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Detail",
+        "endpoint": "/api/shortdrama/freereels/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "FreeReels - Stream",
+        "endpoint": "/api/shortdrama/freereels/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          },
+          {
+            "name": "episode",
+            "required": true,
+            "description": "Nomor episode"
+          }
+        ]
+      },
+      {
+        "name": "NetShort - Search",
+        "endpoint": "/api/shortdrama/netshort/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "NetShort - Homepage",
+        "endpoint": "/api/shortdrama/netshort/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "NetShort - Trending",
+        "endpoint": "/api/shortdrama/netshort/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "NetShort - Latest",
+        "endpoint": "/api/shortdrama/netshort/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "NetShort - Detail",
+        "endpoint": "/api/shortdrama/netshort/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "NetShort - Stream",
+        "endpoint": "/api/shortdrama/netshort/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "MeloShort - Search",
+        "endpoint": "/api/shortdrama/meloshort/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Keyword"
+          }
+        ]
+      },
+      {
+        "name": "MeloShort - Homepage",
+        "endpoint": "/api/shortdrama/meloshort/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "MeloShort - Trending",
+        "endpoint": "/api/shortdrama/meloshort/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "MeloShort - Latest",
+        "endpoint": "/api/shortdrama/meloshort/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "MeloShort - Detail",
+        "endpoint": "/api/shortdrama/meloshort/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "MeloShort - Stream",
+        "endpoint": "/api/shortdrama/meloshort/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          },
+          {
+            "name": "episodeId",
+            "required": true,
+            "description": "Episode ID dari detail"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Search",
+        "endpoint": "/api/shortdrama/goodshort/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Homepage",
+        "endpoint": "/api/shortdrama/goodshort/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Trending",
+        "endpoint": "/api/shortdrama/goodshort/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Latest",
+        "endpoint": "/api/shortdrama/goodshort/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Detail",
+        "endpoint": "/api/shortdrama/goodshort/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "bookId",
+            "required": true,
+            "description": "Book ID"
+          }
+        ]
+      },
+      {
+        "name": "GoodShort - Stream",
+        "endpoint": "/api/shortdrama/goodshort/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "bookId",
+            "required": true,
+            "description": "Book ID"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Search",
+        "endpoint": "/api/shortdrama/dramawave/search",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "q",
+            "required": true,
+            "description": "Keyword"
+          },
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Homepage",
+        "endpoint": "/api/shortdrama/dramawave/home",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Trending",
+        "endpoint": "/api/shortdrama/dramawave/populer",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Latest",
+        "endpoint": "/api/shortdrama/dramawave/new",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "page",
+            "required": false,
+            "description": "Halaman"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Detail",
+        "endpoint": "/api/shortdrama/dramawave/detail",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Drama ID"
+          }
+        ]
+      },
+      {
+        "name": "DramaWave - Stream",
+        "endpoint": "/api/shortdrama/dramawave/stream",
+        "filename": "shortdrama",
+        "method": "GET",
+        "params": [
+          {
+            "name": "dramaId",
+            "required": true,
+            "description": "Drama ID"
+          },
+          {
+            "name": "episode",
+            "required": true,
+            "description": "Nomor episode"
           }
         ]
       }
