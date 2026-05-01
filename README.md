@@ -252,3 +252,34 @@ Project ini dilengkapi GUI bawaan:
 <div align="center">
 Created with ❤️ by Danzz
 </div>
+
+
+## 🇮🇩 Mau API seperti shenirapi? (Quick Start)
+
+Kalau target kamu ingin bikin REST API model agregator seperti `https://shenirapi.shenira9x.me/`, alur paling cepat dari base ini:
+
+1. **Jalankan template ini dulu**
+   ```bash
+   npm install
+   npm run dev
+   ```
+2. **Kelompokkan endpoint per fitur** di folder `router/` (contoh: `download/`, `search/`, `tools/`).
+3. **Daftarkan semua endpoint** ke `src/config.json` supaya otomatis keload dan muncul di `/docs`.
+4. **Standarkan response JSON** (misalnya `status`, `creator`, `result`) agar konsisten untuk semua endpoint.
+5. **Tambah proteksi sederhana**: validasi query, timeout axios, dan error message yang jelas.
+6. **Deploy** ke Vercel/VPS setelah lolos test `npm run build && npm start`.
+
+Contoh response yang rapi:
+
+```json
+{
+  "status": true,
+  "creator": "NamaKamu",
+  "result": {
+    "title": "...",
+    "url": "..."
+  }
+}
+```
+
+> Tips: fokus dulu 3 endpoint populer (mis. tiktok dl, yt search, shorturl), baru tambah fitur lain bertahap.
